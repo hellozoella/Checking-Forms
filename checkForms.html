@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Checking Forms</title>
+<link type="text/css" href="style.css" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Gochi+Hand' rel='stylesheet' type='text/css'>
+<script src="jquery.js"></script>
+</head>
+
+<body>
+<div class="bg">
+<h3 class="title">♥ Why are you into me?</h3>
+   <form>
+     <div class="body">
+     <input type="checkbox" id="face" name="face" value="2" class="infobox">
+     <label for="face" class="fakeinfo">Face</label>
+       
+     <input type="checkbox" id="eyes" name="eyes" value="4" class="infobox">
+     <label for="eyes" class="fakeinfo">Eyes</label>
+     
+     <input type="checkbox" id="hair" name="hair" value="3" class="infobox">
+     <label for="hair" class="fakeinfo">Hair</label>
+     
+     <input type="checkbox" id="smile" name="smile" value="5" class="infobox">
+     <label for="smile" class="fakeinfo">Smile</label>
+     
+     <input type="checkbox" id="body" name="body" value="2" class="infobox">
+     <label for="body" class="fakeinfo">Body</label>
+     </div>
+     
+     <div class="humour">
+     <input type="checkbox" id="humour" name="humour" value="4" class="infobox">
+     <label for="humour" class="fakeinfo">Humour</label>
+     
+     <input type="checkbox" id="music" name="music" value="4" class="infobox">
+     <label for="music" class="fakeinfo">Same Music</label>
+     
+     <input type="checkbox" id="thoughts" name="thoughts" value="4" class="infobox">
+     <label for="thoughts" class="fakeinfo">Same Thoughts</label>
+     
+     <input type="checkbox" id="kind" name="kind" value="4" class="infobox">
+     <label for="kind" class="fakeinfo">Warmth & Kindness</label>
+     </div>
+     
+     <div class="charac">
+     <input type="checkbox" id="inte" name="inte" value="5" class="infobox">
+     <label for="inte" class="fakeinfo">Intelligence</label>
+     
+     <input type="checkbox" id="thoug" name="thoug" value="5" class="infobox">
+     <label for="thoug" class="fakeinfo">Thoughtfulness</label>
+     
+     <input type="checkbox" id="tend" name="tend" value="5" class="infobox">
+     <label for="tend" class="fakeinfo">Tenderness</label>
+     </div>
+
+     <div class="what">
+     <input type="checkbox" id="money" name="money" value="-5" class="infobox">
+     <label for="money" class="fakeinfo">Money</label>
+     
+     <input type="checkbox" id="house" name="house" value="-5" class="infobox">
+     <label for="house" class="fakeinfo">Houses</label>
+     
+     <input type="checkbox" id="bg" name="bg" value="-5" class="infobox">
+     <label for="bg" class="fakeinfo">Background</label>
+     </div>
+
+
+     <div class="clear"></div>
+     <p class="error red" id="error">No...Please select at least one:-(</p>     <!--------error message-------->
+     <p class="result red" id="result"></p>       <!----------result message---------->
+   </form>
+     <div class="clear"></div>
+   <input type="submit" value="HAVE A TRY" class="submit" id="submit">         <!----------submit btn---------->
+</div>
+
+<script>
+$(document).ready(function(){
+	$('#error').hide();
+	$('#submit').click(function(event){
+		var count = 0;
+		var amt = 0;  // amt=0 is start num
+		
+		$('form').find(':checkbox').each(function(){
+			if($(this).is(':checked')){
+				count ++;
+				amt = amt + parseInt($(this).val()); 
+				};  //end if
+				
+			if(count==0){
+				$('#result').hide();
+				$('#error').show();
+				}
+			else{
+				$('#error').hide();
+				$('#result').show();
+				$('#result').text('You are into me '+amt+ ' much :-)');
+				}
+			event.preventDefault();  // end if
+						
+			});  // end find
+			
+			$('.what').find(':checkbox').each(function(){
+				if($(this).is(':checked')){
+					$('#error').hide();
+					$('#result').show();
+					$('#result').text('What? I guess you love my dad more :-(');
+					}
+				}); //end find 
+			
+			
+			
+		});   //end click
+	})
+</script>
+
+
+
+
+</body>
+</html>
